@@ -23,180 +23,123 @@ function setLoadMessage( msg ){
   $('#loadtext').html(msg + "...");
 }
 
-var postColladaLoaded = function () {
-  console.log('postColladaLoaded');
+function onTextures() {
   init();
   animate();
   $("#loadtext").hide();
 };
 
-$(document).ready( function() {
-  
-  // Detect WebGL
-  if (!Detector.webgl)
-    Detector.addGetWebGLMessage();
-  
-  // Show message while textures load
-  $('#loadtext').show();
-  setLoadMessage("Loading Martian Greenhouse");
-  
-  // Load terrain texture
-  var terrainTexture = THREE.ImageUtils.loadTexture('./textures/TerrainSurface.png');
-  
-  // Create deferred objects for texture loading
-  var dfd1 = new $.Deferred();
-  var dfd2 = new $.Deferred();
-  
-  // Callback for when all textures loaded
-  $.when(dfd1, dfd2).done(postColladaLoaded);
-  
-  // Initialize new Collada loaders
-  var greenhouseLoader = new THREE.ColladaLoader();
-  greenhouseLoader.options.convertUpAxis = true;
-  greenhouseLoader.load( './models/greenhouseStructure.dae', function (collada) {
-    
-    dae = collada.scene;
-    daeAnimation = collada.animations;
-    
-    dae.scale.set( 1, 1, 1 );
-    
-    dae.updateMatrix();
-    dfd1.resolve();
-  });
-  
-  var terrainLoader = new THREE.ColladaLoader();
-  terrainLoader.options.convertUpAxis = true;
-  terrainLoader.load('./models/terrain.dae', function( collada) {
-    
-    terrain = collada.scene;
-    terrain.scale.set(1,1,1);
-    
-    terrainTexture.wrapS = terrainTexture.wrapT = THREE.RepeatWrapping;
-    terrainTexture.repeat.set(30, 30);
-    
-    terrain.children[0].material = new THREE.MeshLambertMaterial({ 
-      map: terrainTexture
-    })
-    
-    terrain.children[0].receiveShadow = true;
-    dfd2.resolve();
-  });
-
-});
-
 function init() {
 
-	/********************************
-	  SCENE, CAMERA, LIGHTS, COLLADA
-	********************************/
+  /********************************
+    SCENE, CAMERA, LIGHTS, COLLADA
+  ********************************/
 
-	$container = $("#container");
+  $container = $("#container");
 
-	scene = new THREE.Scene();
-    scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
+  scene = new THREE.Scene();
+  scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
 
-	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
-	camera.position.set( 10, 2, 20 );
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
+  camera.position.set( 10, 2, 20 );
 
-	camTarget = dae.position.clone();
-	
+  camTarget = dae.position.clone();
 
-	/// LIGHTS!!
+  /// LIGHTS!!
+  var directionalLight = new THREE.DirectionalLight( 0x6B7DA0, 1.5 );
+  directionalLight.position.set( -10, 10, 0 );
+  directionalLight.castShadow = true;
+  scene.add( directionalLight );
+  
+  // Greenhouse Frame
+  dae.scale.set( .25,.25,.25);
+  dae.position.set( 0, 2, 0);
+  scene.add( dae );
+  
+  // Cylinder Geometry = radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded
+  var glassMaterial = new THREE.MeshLambertMaterial( { color: "rgb(255,0,0)", opacity: .25 } );
+  var glass = new THREE.Mesh( new THREE.CylinderGeometry(8, 8, 46.5, 10, 10, false), glassMaterial );
+  glass.rotation.x = 90 * Math.PI / 180;
+  dae.add(glass);
+  
+  // Terrain Collada
+  scene.add( terrain );
+  
+  var sideScale = 0.5;
+  var sideSize = 1024;
 
-	// var ambientLight = new THREE.AmbientLight( 0x00000 );
-	// ambientLight.color.setRGB( .3, .3, .3 );
-	// scene.add(ambientLight);
+  var skybox = new THREE.Object3D();
 
-	var directionalLight = new THREE.DirectionalLight( 0x6B7DA0, 1.5 );
-	directionalLight.position.set( -10, 10, 0 );
-	// directionalLight.castShadow = true;
-	scene.add( directionalLight );
-
-	// Greenhouse Frame
-	dae.scale.set( .25,.25,.25);
-	dae.position.set( 0, 2, 0);
-	scene.add( dae );
-
-	// Cylinder Geometry = radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded
-	var glassMaterial = new THREE.MeshLambertMaterial( { color: "rgb(255,0,0)", opacity: .25 } );
-	var glass = new THREE.Mesh( new THREE.CylinderGeometry(8, 8, 46.5, 10, 10, false), glassMaterial );
-	glass.rotation.x = 90 * Math.PI / 180;
-	dae.add(glass);
-
-	// Terrain Collada
-	scene.add( terrain );
-
-	var sideScale = .5;
-	var sideSize = 1024;
-
-	var skybox = new THREE.Object3D();
-
-	var sides = [
-		{	
-			name: 'front',
-			url: 'textures/skybox/skybox_07.jpg',
-			position: new THREE.Vector3( 0, 0,  sideSize ),
-			rotation: new THREE.Vector3( 0, Math.PI, 0 ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		},{	
-			name: 'back',
-			url: 'textures/skybox/skybox_05.jpg', 
-			position: new THREE.Vector3( 0, 0, -sideSize ),
-			rotation: new THREE.Vector3( 0, 0, 0 ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		},{	
-			name: 'left',
-			url: 'textures/skybox/skybox_04.jpg',
-			position: new THREE.Vector3( -sideSize, 0, 0 ),
-			rotation: new THREE.Vector3( 0, Math.PI / 2, 0 ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		},{
-			name: 'right',
-			url: 'textures/skybox/skybox_06.jpg',
-			position: new THREE.Vector3( sideSize, 0, 0 ),
-			rotation: new THREE.Vector3( 0, -Math.PI / 2, 0 ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		},{
-			name: 'top',
-			url: 'textures/skybox/skybox_02.jpg',
-			position: new THREE.Vector3( 0, -sideSize, 0 ),
-			rotation: new THREE.Vector3( - Math.PI / 2, 0, Math.PI ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		},{
-			name: 'bottom',
-			url: 'textures/skybox/skybox_09.jpg',
-			position: new THREE.Vector3( 0,  sideSize, 0 ),
-			rotation: new THREE.Vector3( Math.PI / 2, 0, Math.PI ),
-			scale: new THREE.Vector3( sideScale, sideScale, sideScale )
-		}
-	];
-
-	for ( var i = 0; i < sides.length; i ++ ) {
-
-		var side = sides[ i ];
-
-		var plane = new THREE.PlaneGeometry( sideSize,  sideSize );
-		var mat = new THREE.MeshBasicMaterial( {
-			map: THREE.ImageUtils.loadTexture( sides[i].url ),
-			overdraw: true
-		});
-
-		var object = new THREE.Mesh( plane, mat );
-		object.frustumCulled = false;
-
-		var vec = new THREE.Vector3();
-		vec.multiplyVectors( side.position, side.scale );
-
-		object.position = vec;
-		object.rotation = side.rotation;
-		object.scale.x = side.scale.x * 2;
-		object.scale.y = side.scale.y * 2;
-		object.scale.z = side.scale.z * 2;
-
-		skybox.add( object );
-
-	}
-
+  var sides = [
+    {
+      name: 'front',
+      url: 'textures/skybox/skybox_07.jpg',
+      position: new THREE.Vector3( 0, 0,  sideSize ),
+      rotation: new THREE.Vector3( 0, Math.PI, 0 ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    },
+    {
+      name: 'back',
+      url: 'textures/skybox/skybox_05.jpg', 
+      position: new THREE.Vector3( 0, 0, -sideSize ),
+      rotation: new THREE.Vector3( 0, 0, 0 ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    },
+    {
+      name: 'left',
+      url: 'textures/skybox/skybox_04.jpg',
+      position: new THREE.Vector3( -sideSize, 0, 0 ),
+      rotation: new THREE.Vector3( 0, Math.PI / 2, 0 ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    },
+    {
+      name: 'right',
+      url: 'textures/skybox/skybox_06.jpg',
+      position: new THREE.Vector3( sideSize, 0, 0 ),
+      rotation: new THREE.Vector3( 0, -Math.PI / 2, 0 ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    },
+    {
+      name: 'top',
+      url: 'textures/skybox/skybox_02.jpg',
+      position: new THREE.Vector3( 0, -sideSize, 0 ),
+      rotation: new THREE.Vector3( - Math.PI / 2, 0, Math.PI ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    },
+    {
+      name: 'bottom',
+      url: 'textures/skybox/skybox_09.jpg',
+      position: new THREE.Vector3( 0,  sideSize, 0 ),
+      rotation: new THREE.Vector3( Math.PI / 2, 0, Math.PI ),
+      scale: new THREE.Vector3( sideScale, sideScale, sideScale )
+    }
+  ];
+  
+  for ( var i = 0; i < sides.length; i ++ ) {
+    
+    var side = sides[ i ];
+    
+    var plane = new THREE.PlaneGeometry( sideSize,  sideSize );
+    var mat = new THREE.MeshBasicMaterial( {
+      map: THREE.ImageUtils.loadTexture( sides[i].url ),
+      overdraw: true
+    });
+    
+    var object = new THREE.Mesh( plane, mat );
+    object.frustumCulled = false;
+    
+    var vec = new THREE.Vector3();
+    vec.multiplyVectors( side.position, side.scale );
+    
+    object.position = vec;
+    object.rotation = side.rotation;
+    object.scale.x = side.scale.x * 2;
+    object.scale.y = side.scale.y * 2;
+    object.scale.z = side.scale.z * 2;
+    
+    skybox.add( object );
+  }
+  
   skybox.scale.set( 10, 10, 10);
   scene.add(skybox);
 
@@ -220,12 +163,16 @@ function init() {
   /********************************
   STATS
   ********************************/
-
-  stats = new Stats();
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.top = '0px';
-  $container.append( stats.domElement );
-
+  
+  // Load stats if on development server
+  var hostname = location.hostname;
+  if (hostname === '0.0.0.0' || hostname === 'localhost') {
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '0px';
+    $container.append( stats.domElement );
+  }
+  
   /********************************
   EVENTS
   ********************************/
@@ -268,7 +215,10 @@ function animate() {
   camera.lookAt( camTarget );
   
   controls.update();
-  stats.update();
+  
+  if (stats)
+    stats.update();
+    
   TWEEN.update();
   
   time += .01;
@@ -281,3 +231,57 @@ function render() {
   renderer.clear();
   renderer.render( scene, camera );
 }
+
+$(document).ready( function() {
+  
+  // Detect WebGL
+  if (!Detector.webgl)
+    Detector.addGetWebGLMessage();
+  
+  // Show message while textures load
+  $('#loadtext').show();
+  setLoadMessage("Loading Martian Greenhouse");
+  
+  // Load terrain texture
+  var terrainTexture = THREE.ImageUtils.loadTexture('./textures/TerrainSurface.png');
+  
+  // Create deferred objects for texture loading
+  var dfd1 = new $.Deferred();
+  var dfd2 = new $.Deferred();
+  
+  // Callback for when all textures loaded
+  $.when(dfd1, dfd2).done(onTextures);
+  
+  // Initialize new Collada loaders
+  var greenhouseLoader = new THREE.ColladaLoader();
+  greenhouseLoader.options.convertUpAxis = true;
+  greenhouseLoader.load( './models/greenhouseStructure.dae', function (collada) {
+    
+    dae = collada.scene;
+    daeAnimation = collada.animations;
+    
+    dae.scale.set( 1, 1, 1 );
+    
+    dae.updateMatrix();
+    dfd1.resolve();
+  });
+  
+  var terrainLoader = new THREE.ColladaLoader();
+  terrainLoader.options.convertUpAxis = true;
+  terrainLoader.load('./models/terrain.dae', function( collada) {
+    
+    terrain = collada.scene;
+    terrain.scale.set(1,1,1);
+    
+    terrainTexture.wrapS = terrainTexture.wrapT = THREE.RepeatWrapping;
+    terrainTexture.repeat.set(30, 30);
+    
+    terrain.children[0].material = new THREE.MeshLambertMaterial({ 
+      map: terrainTexture
+    })
+    
+    terrain.children[0].receiveShadow = true;
+    dfd2.resolve();
+  });
+
+});
