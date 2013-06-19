@@ -178,7 +178,7 @@ function init() {
   ********************************/
 
 
-  window.addEventListener( 'resize', onWindowResize, false );
+  window.addEventListener('resize', onWindowResize, false );
 
   /********************************
   BUILD GUI
