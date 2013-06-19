@@ -23,57 +23,65 @@ function setLoadMessage( msg ){
   $('#loadtext').html(msg + "...");
 }
 
-$(document).ready( function() {
+var postColladaLoaded = function () {
+  console.log('postColladaLoaded');
+  init();
+  animate();
+  $("#loadtext").hide();
+};
 
+$(document).ready( function() {
+  
+  // Detect WebGL
   if (!Detector.webgl)
     Detector.addGetWebGLMessage();
-
+  
+  // Show message while textures load
   $('#loadtext').show();
-
-  var loader = new THREE.ColladaLoader();
-  var terrainLoader = new THREE.ColladaLoader();
-  var terrainTexture = THREE.ImageUtils.loadTexture( './textures/TerrainSurface.png' );
-
   setLoadMessage("Loading Martian Greenhouse");
-
-  loader.options.convertUpAxis = true;
-  loader.load( './models/greenhouseStructure.dae', function ( collada ) {
-
+  
+  // Load terrain texture
+  var terrainTexture = THREE.ImageUtils.loadTexture('./textures/TerrainSurface.png');
+  
+  // Create deferred objects for texture loading
+  var dfd1 = new $.Deferred();
+  var dfd2 = new $.Deferred();
+  
+  // Callback for when all textures loaded
+  $.when(dfd1, dfd2).done(postColladaLoaded);
+  
+  // Initialize new Collada loaders
+  var greenhouseLoader = new THREE.ColladaLoader();
+  greenhouseLoader.options.convertUpAxis = true;
+  greenhouseLoader.load( './models/greenhouseStructure.dae', function (collada) {
+    
     dae = collada.scene;
     daeAnimation = collada.animations;
-
-    dae.scale.set( 1, 1, 1 );
-
-    dae.updateMatrix();
     
-        terrainLoader.options.convertUpAxis = true;
-        terrainLoader.load('./models/terrain.dae', function( collada) {
-	        
-        	terrain = collada.scene;
-        	console.log(terrain);
-        	terrain.scale.set(1,1,1);
+    dae.scale.set( 1, 1, 1 );
+    
+    dae.updateMatrix();
+    dfd1.resolve();
+  });
+  
+  var terrainLoader = new THREE.ColladaLoader();
+  terrainLoader.options.convertUpAxis = true;
+  terrainLoader.load('./models/terrain.dae', function( collada) {
+    
+    terrain = collada.scene;
+    terrain.scale.set(1,1,1);
+    
+    terrainTexture.wrapS = terrainTexture.wrapT = THREE.RepeatWrapping;
+    terrainTexture.repeat.set(30, 30);
+    
+    terrain.children[0].material = new THREE.MeshLambertMaterial({ 
+      map: terrainTexture
+    })
+    
+    terrain.children[0].receiveShadow = true;
+    dfd2.resolve();
+  });
 
-        	terrainTexture.wrapS = terrainTexture.wrapT = THREE.RepeatWrapping;
-			terrainTexture.repeat.set( 30, 30 );
-
-        	terrain.children[0].material = new THREE.MeshLambertMaterial({ 
-        		map: terrainTexture
-        	})
-
-        	// terrain.children[0].castShadow = true;
-        	terrain.children[0].receiveShadow = true;
-	        postColladaLoaded();
-
-
-        });
-
-	} );
-
-	var postColladaLoaded = function () {
-	        init();
-	        animate();
-			$("#loadtext").hide();
-    };
 });
 
 function init() {
