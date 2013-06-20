@@ -1,5 +1,5 @@
 var configuration = {
-	title: 'Test Lab', // Used as the text for the html title.
+	title: 'Greenhouse on Mars', // Used as the text for the html title.
 	urls: {
 		video: {
 			'mp4': 'video/wtf_greenscreen_sm1.mp4'

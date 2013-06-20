@@ -1,10 +1,8 @@
-/* Branding Style */
 body{
     font-family: 'lato', lato, serif;
     /*background: #2e3132;*/
 	color: rgb(181, 184, 174)
 }
-/* Structural Style*/
 @font-face{
     font-family: lato;
     src: url('../font/Lato-Reg.otf');
@@ -25,6 +23,7 @@ body{
 }
 #lab_video{
 	display: none;
+	pointer-events: none;
 }
 #lab_canvas{
     position: absolute;
@@ -34,6 +33,7 @@ body{
     height: 100%;
 	border: 0px solid transparent;
 	background: transparent;
+	pointer-events: none;
 }
 .slider_arrow{
     opacity: 0;

@@ -41,7 +41,7 @@ function init() {
   scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
-  camera.position.set( 10, 2, 20 );
+  camera.position.set( -14, 18, 14 );
 
   camTarget = dae.position.clone();
 
@@ -57,7 +57,12 @@ function init() {
   scene.add( dae );
   
   // Cylinder Geometry = radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded
-  var glassMaterial = new THREE.MeshLambertMaterial( { color: "rgb(255,0,0)", opacity: .25 } );
+  var glassMaterial = new THREE.MeshLambertMaterial({
+    color: 0xffffff,
+    opacity: 0.6,
+    transparent: true
+  });
+  
   var glass = new THREE.Mesh( new THREE.CylinderGeometry(8, 8, 46.5, 10, 10, false), glassMaterial );
   glass.rotation.x = 90 * Math.PI / 180;
   dae.add(glass);
@@ -185,20 +190,20 @@ function init() {
   ********************************/
 
   var camTweens = { 
-    one: new CAMTWEEN( { x:5, y:5, z:5 }, { x:0, y:0, z:0 }, 1 ),
-    two: new CAMTWEEN( { x:0, y:2, z:10 }, { x:0, y:0, z:0 }, 1 ),
-    three: new CAMTWEEN( { x:-5, y:3, z:-2 }, { x:0, y:0, z:0 }, 1 ),
-    four: new CAMTWEEN( { x:0, y:4, z:-6 }, { x:0, y:0, z:0 }, 1 )
+    one: new CAMTWEEN( { x:-20, y:15, z:10 }, { x:0, y:0, z:0 }, 1 ),
+    two: new CAMTWEEN( { x:0, y:12, z:20 }, { x:0, y:0, z:0 }, 1 ),
+    three: new CAMTWEEN( { x:-25, y:6, z:-2 }, { x:0, y:0, z:0 }, 1 ),
+    four: new CAMTWEEN( { x:0, y:3, z:-6 }, { x:0, y:0, z:0 }, 1 )
   };
 
   var gui = new dat.GUI();
 
   var camFolder = gui.addFolder( 'Camera Positions' );
   camFolder.open();
-  camFolder.add( camTweens.one, 'tween' ).name( 'Camera One' );
-  camFolder.add( camTweens.two, 'tween' ).name( 'Camera Two' );
-  camFolder.add( camTweens.three, 'tween' ).name( 'Camera Three' );
-  camFolder.add( camTweens.four, 'tween' ).name( 'Camera Four' );
+  camFolder.add( camTweens.one, 'tween' ).name( 'Far Out' );
+  camFolder.add( camTweens.two, 'tween' ).name( 'Front' );
+  camFolder.add( camTweens.three, 'tween' ).name( 'Side' );
+  camFolder.add( camTweens.four, 'tween' ).name( 'Inside' );
 }
 
 
