@@ -59,7 +59,7 @@ function init() {
   // Cylinder Geometry = radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded
   var glassMaterial = new THREE.MeshLambertMaterial({
     color: 0xffffff,
-    opacity: 0.3,
+    opacity: 0.6,
     transparent: true
   });
   
