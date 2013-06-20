@@ -35,7 +35,7 @@ function init() {
     SCENE, CAMERA, LIGHTS, COLLADA
   ********************************/
 
-  $container = $("#container");
+  $parent = $("#three");
 
   scene = new THREE.Scene();
   scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
@@ -151,10 +151,10 @@ function init() {
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setSize( WIDTH, HEIGHT );
 
-  $container.append( renderer.domElement );
+  $parent.append( renderer.domElement );
   renderer.autoClear = false;
 
-  controls = new THREE.OrbitControls( camera, $container[0] );
+  controls = new THREE.OrbitControls( camera, $parent[0] );
   controls.addEventListener( 'change', render );
   controls.maxPolarAngle = Math.PI / 2 + ( -1 * Math.PI / 180 ); 
   controls.minDistance = 2.5;
@@ -170,7 +170,7 @@ function init() {
     stats = new Stats();
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.top = '0px';
-    $container.append( stats.domElement );
+    $parent.append( stats.domElement );
   }
   
   /********************************
