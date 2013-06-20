@@ -42,6 +42,11 @@ function init() {
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
   camera.position.set( -14, 18, 14 );
+  
+  // setTimeout(function() {
+  //   camTween = new CAMTWEEN( { x:0, y:0, z:0 }, { x:0, y:0, z:0 }, 1 );
+  //   camTween.tween();
+  // }, 2000);
 
   camTarget = dae.position.clone();
 

@@ -47,14 +47,6 @@ body {
   overflow: hidden;
 }
 
-#three {
-  border: 1px solid red;
-}
-
-#video {
-  border: 1px solid green;
-}
-
 
 #label_template{
   display: 'inline-block';
