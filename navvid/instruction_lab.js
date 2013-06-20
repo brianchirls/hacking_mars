@@ -159,10 +159,10 @@ var instruction_lab = {
 					display_number = '&nbsp;';
 					icon.style.background = 'rgb(127, 129, 132)';
 				} else{
-					var step_number_display = document.createElement('span');
-					step_number_display.textContent = display_number;
-					step_number_display.setAttribute('class', 'number');
-					icon.appendChild(step_number_display);
+					//var step_number_display = document.createElement('span');
+					//step_number_display.textContent = display_number;
+					//step_number_display.setAttribute('class', 'number');
+					//icon.appendChild(step_number_display);
 				}
 				if(instruction.time_in && !(instruction.unnumbered)){
 					var time_stamp = document.createElement('a');
@@ -502,11 +502,11 @@ var instruction_lab = {
 			tip.addEventListener('click', function (){
 				self.temp_instruction_lab.instructions.scroll_to(step_index);
 			}, false);
-			var step_number_display = document.createElement('span');
-			step_number_display.textContent = step_index;
-			step_number_display.setAttribute('class', 'number');
-			var icon = tip.getElementsByClassName('icon')[0];
-			icon.appendChild(step_number_display);
+			//var step_number_display = document.createElement('span');
+			//step_number_display.textContent = step_index;
+			//step_number_display.setAttribute('class', 'number');
+			//var icon = tip.getElementsByClassName('icon')[0];
+			//icon.appendChild(step_number_display);
 			return tip;
 		},
 		create_tip: function (tip_json){
