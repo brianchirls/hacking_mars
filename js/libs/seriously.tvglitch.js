@@ -288,7 +288,7 @@
 					uniform: 'frameShape',
 					min: 0,
 					max: 2,
-					defaultValue: 0.27
+					defaultValue: 0.0
 				},
 				frameLimit: {
 					type: 'number',
