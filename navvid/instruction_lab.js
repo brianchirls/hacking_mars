@@ -39,7 +39,6 @@ var instruction_lab = {
 			new_lab.video_frame.player = main_lab.create_player('video');
 		}
         var video_sources = configuration.urls.video;
-		console.log(video_sources);
         for(var codex in video_sources){
             var source = document.createElement('source');
             source.setAttribute('src', video_sources[codex]);
@@ -81,7 +80,6 @@ var instruction_lab = {
 		//chroma.balance = 1
 		
 		// Create a source object by passing a CSS query string.
-		console.log(new_lab.video_frame.player.media);
 		colorbars = seriously.source(new_lab.video_frame.player.media);
 		
 		// now do the same for the target canvas

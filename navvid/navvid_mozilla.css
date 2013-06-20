@@ -1,15 +1,15 @@
-@font-face{
-    font-family: sohopro;
-    src: url('SohoPro-Condensed.otf');
+/* Branding Style */
+body{
+    font-family: 'lato', lato, serif;
+    /*background: #2e3132;*/
+	color: rgb(181, 184, 174)
 }
+/* Structural Style*/
 @font-face{
-    font-family: sohopro_ie;
-    src: url('SohoPro-Condensed.eot');
+    font-family: lato;
+    src: url('../font/Lato-Reg.otf');
 }
 body{
-    background: #2e3132;
-    /*background: white;*/
-    font-family: 'SohoPro', sohopro, sohopro_ie, serif;
     margin: 0;
 }
 #frame{
@@ -18,11 +18,9 @@ body{
     left: 0px;
     top: 0px;
     overflow: hidden;
-    background-image: url('ignite_background.png');
-    background-size: 100% 100%;
 }
 #frame a:link, #frame a:visited{
-    color: black;
+    color: rgb(181, 181, 174);
     text-decoration: none;
 }
 #lab_video{
@@ -83,36 +81,9 @@ body{
     position: absolute;
     overflow: hidden;
 }
-#code_display{
-    z-index: 1;
-    background: white;
-    position: absolute;
-    font-family: monospace;
-    font-size: 0.5em;
-    padding: 0% 1%;
-    left: 6%;
-    width: 51%;
-    max-height: 57%;
-    min-height: 3em;
-    border-style: solid;
-    border-color: #999;
-    border-width: 0.70em;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
-    transition        : height 1s, width 1s, left 1s, bottom 1s;
-    -moz-transition   : height 1s, width 1s, left 1s, bottom 1s;
-    -webkit-transition: height 1s, width 1s, left 1s, bottom 1s;
-    -o-transition     : height 1s, width 1s, left 1s, bottom 1s;
-    overflow: auto;
-}
-#code_display.hidden{
-    bottom: -65%;
-}
-#code_display.displayed{
-    bottom: 12%;
-}
 .icon{
     display: inline-block;
-    background: rgb(127, 129, 132);
+    background: rgb(135, 153, 72);
     text-align: center;
     border-radius: 0.2em;
 }
@@ -127,7 +98,7 @@ body{
 }
 .tip div.content{
     position: relative;
-    background: white;
+    background: rgba(31, 38, 18, 0.7);
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
@@ -164,7 +135,7 @@ body{
     position: relative;
     display: inline-block;
     vertical-align: top;
-    background: rgb(127, 129, 132);
+    background: rgb(135, 153, 72);
     text-align: center;
     border-radius: 0.2em;
     z-index: 0;
@@ -193,7 +164,7 @@ body{
     height: 2.5em;
     margin-bottom: 1em;
     opacity: 0;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
+    /*box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);*/
     transition        : opacity 1s, height 1s, width 1s, left 1s, margin 1s, margin-bottom 1s;
     -moz-transition   : opacity 1s, height 1s, width 1s, left 1s, margin 1s, margin-bottom 1s;
     -webkit-transition: opacity 1s, height 1s, width 1s, left 1s, margin 1s, margin-bottom 1s;
@@ -207,7 +178,7 @@ body{
 }
 #tip_area .tip div.content{
     width: 7.5em;
-    background: rgba(255,255,255,0.7);
+    background: rgba(31, 38, 18, 0.7);
     border-radius: 0.2em;
 }
 #tip_area .tip div.header{
@@ -221,7 +192,7 @@ body{
     width: 2.5em;
 }
 #tip_area .tip.step div.icon{
-    background: rgb(239, 72, 25);
+    background: rgb(135, 153, 72);
 }
 #tip_area .tip div.icon img{
 }
@@ -232,7 +203,7 @@ body{
 }
 .expander .tip div.content,
 .expander .tip div.icon{
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
+    /*box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);*/
     border-radius: 0.2em;
 }
 .expander .tip{
@@ -283,18 +254,13 @@ body{
     padding: 0em;
 }
 
-/*.instruction > .icon,*/
-.instruction > .content/*,
-.tip*/{
-    border: 1px solid black;
-}
 .instruction > .icon{
-    background: rgb(239, 72, 25);
+    background: rgb(135, 153, 72);
     display: inline-block;
     width: 3em;
     height: 3em;
     border-radius: 0.2em;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
+    /*box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);*/
     vertical-align: top;
     cursor: pointer;
 }
@@ -302,12 +268,12 @@ body{
     font-size: 2.5em;
 }
 .instruction > .content{
-    background: white;
+    background: rgba(31, 38, 18, 0.7);
     display: inline-block;
     border-radius: 0.2em;
     width: 26em;
     min-height: 3em;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
+    /*box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);*/
 }
 .instruction > .content > .header{
     height: 3em;
@@ -327,7 +293,7 @@ body{
 .instruction > .content > .header > .time_stamp{
     display: inline-block;
     vertical-align: middle;
-    color: blue;
+    color: white;
     cursor: pointer;
 }
 .instruction > .content > .header > .time_stamp > img{
@@ -361,15 +327,14 @@ body{
     font-size: 0.7em;
 }
 #instructions_slider{
-    background: white;
+    background: rgba(31, 38, 18, 0.7);
     position: absolute;
-    border: 1px solid black;
     top: 1em;
     right: 1em;
     width: 2em;
     height: 17.5em;
     border-radius: 0.2em;
-    box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);
+    /*box-shadow: 0.5em 0.5em 0.5em rgba(0,0,0,0.25);*/
     z-index: 3; /* Above the nav arrows.*/
 }
 #instructions_slider *{
@@ -409,7 +374,7 @@ body{
     position: absolute;
     width: 2em;
     border-radius: 0.2em;
-    background: rgb(239, 72, 25);
+    background: rgb(135, 153, 72);
     /**/
     min-height: 1em;
     
