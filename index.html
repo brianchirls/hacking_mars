@@ -20,13 +20,59 @@
     
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="styles/main.css" type="text/css" charset="utf-8">
+		
+		
+	<link rel="stylesheet" type="text/css" href="navvid/navvid_mozilla.css" />
+	<!--<script src="navvid/popcorn.min.js"></script>-->
+	<script src="navvid/main_lab.js"></script>
+	<script src="navvid/instruction_lab.js"></script>
+	<script src="navvid/configuration.js"></script>
+		
   </head>
   
   <body>
-    
+	
   <div id="loadtext"></div>
   <div id="container"></div>
   <div id="info">Greenhouse on Mars</div>
-  
+        <div id="video_box">
+            <div id="frame">
+                <div id="slider">
+                    <div id="frame_left"></div>
+                    <div id="frame_middle"></div>
+                    <div id="frame_right"></div>
+                </div>
+                <svg id="arrow_left" class="slider_arrow interface" width="50px" height="200px" viewBox="0 0 50 200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <style>
+                        .arrow{
+                            fill: rgba(255,255,255,0.7);
+                        }
+                        .arrow:hover{
+                            fill: rgb(239, 72, 25);
+                            opacity: 1;
+                        }
+                    </style>
+                    <polygon class="arrow" points="50,0 0,100 50,200" />
+                </svg>
+                <svg id="arrow_right" class="slider_arrow interface" width="50px" height="200px" viewBox="0 0 50 200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns:ev="http://www.w3.org/2001/xml-events">
+                    <style>
+                        .arrow{
+                            fill: rgba(255,255,255,0.7);
+                        }
+                        .arrow:hover{
+                            fill: rgb(239, 72, 25);
+                            opacity: 1;
+                        }
+                    </style>
+                    <polygon class="arrow" points="0,0 50,100 0,200" />
+				</svg>
+            </div>
+        </div>
   </body>
 </html>
