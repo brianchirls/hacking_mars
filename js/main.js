@@ -41,7 +41,7 @@ function init() {
   scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
-  camera.position.set( 14, 20, 20 );
+  camera.position.set( -14, 18, 14 );
 
   camTarget = dae.position.clone();
 
@@ -185,9 +185,9 @@ function init() {
   ********************************/
 
   var camTweens = { 
-    one: new CAMTWEEN( { x:20, y:5, z:10 }, { x:0, y:0, z:0 }, 1 ),
-    two: new CAMTWEEN( { x:0, y:3, z:20 }, { x:0, y:0, z:0 }, 1 ),
-    three: new CAMTWEEN( { x:-15, y:6, z:-2 }, { x:0, y:0, z:0 }, 1 ),
+    one: new CAMTWEEN( { x:-20, y:15, z:10 }, { x:0, y:0, z:0 }, 1 ),
+    two: new CAMTWEEN( { x:0, y:12, z:20 }, { x:0, y:0, z:0 }, 1 ),
+    three: new CAMTWEEN( { x:-25, y:6, z:-2 }, { x:0, y:0, z:0 }, 1 ),
     four: new CAMTWEEN( { x:0, y:3, z:-6 }, { x:0, y:0, z:0 }, 1 )
   };
 
@@ -195,10 +195,10 @@ function init() {
 
   var camFolder = gui.addFolder( 'Camera Positions' );
   camFolder.open();
-  camFolder.add( camTweens.one, 'tween' ).name( 'Camera One' );
-  camFolder.add( camTweens.two, 'tween' ).name( 'Camera Two' );
-  camFolder.add( camTweens.three, 'tween' ).name( 'Camera Three' );
-  camFolder.add( camTweens.four, 'tween' ).name( 'Camera Four' );
+  camFolder.add( camTweens.one, 'tween' ).name( 'Far Out' );
+  camFolder.add( camTweens.two, 'tween' ).name( 'Front' );
+  camFolder.add( camTweens.three, 'tween' ).name( 'Side' );
+  camFolder.add( camTweens.four, 'tween' ).name( 'Inside' );
 }
 
 
