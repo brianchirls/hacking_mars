@@ -57,7 +57,12 @@ function init() {
   scene.add( dae );
   
   // Cylinder Geometry = radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded
-  var glassMaterial = new THREE.MeshLambertMaterial( { color: "rgb(255,0,0)", opacity: .25 } );
+  var glassMaterial = new THREE.MeshLambertMaterial({
+    color: 0xffffff,
+    opacity: 0.3,
+    transparent: true
+  });
+  
   var glass = new THREE.Mesh( new THREE.CylinderGeometry(8, 8, 46.5, 10, 10, false), glassMaterial );
   glass.rotation.x = 90 * Math.PI / 180;
   dae.add(glass);
