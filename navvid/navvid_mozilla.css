@@ -10,6 +10,9 @@ body{
 body{
     margin: 0;
 }
+#simulation{
+	text-align: center;
+}
 #frame{
     position: absolute;
 	text-align: left;
