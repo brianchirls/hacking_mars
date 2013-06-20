@@ -41,7 +41,7 @@ function init() {
   scene.fog = new THREE.Fog( 0x6B7DA0, 0, 22000 );
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
-  camera.position.set( 10, 2, 20 );
+  camera.position.set( 14, 20, 20 );
 
   camTarget = dae.position.clone();
 
@@ -185,10 +185,10 @@ function init() {
   ********************************/
 
   var camTweens = { 
-    one: new CAMTWEEN( { x:5, y:5, z:5 }, { x:0, y:0, z:0 }, 1 ),
-    two: new CAMTWEEN( { x:0, y:2, z:10 }, { x:0, y:0, z:0 }, 1 ),
-    three: new CAMTWEEN( { x:-5, y:3, z:-2 }, { x:0, y:0, z:0 }, 1 ),
-    four: new CAMTWEEN( { x:0, y:4, z:-6 }, { x:0, y:0, z:0 }, 1 )
+    one: new CAMTWEEN( { x:20, y:5, z:10 }, { x:0, y:0, z:0 }, 1 ),
+    two: new CAMTWEEN( { x:0, y:3, z:20 }, { x:0, y:0, z:0 }, 1 ),
+    three: new CAMTWEEN( { x:-15, y:6, z:-2 }, { x:0, y:0, z:0 }, 1 ),
+    four: new CAMTWEEN( { x:0, y:3, z:-6 }, { x:0, y:0, z:0 }, 1 )
   };
 
   var gui = new dat.GUI();
