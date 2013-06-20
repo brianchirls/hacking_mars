@@ -67,24 +67,39 @@ var instruction_lab = {
             new_lab.tip_manager.clear_tips();
         });
         // Finished
-		// Add Seriously Stuff// declare our variables
+		// Add Seriously Stuff
+		// declare our variables
 		var seriously, // the main object that holds the entire composition
 			colorbars, // a wrapper object for our source image
 			target, // a wrapper object for our target canvas
-			chroma;
+			chroma,
+			tvglitch,
+			blackwhite;
 		
 		seriously = new Seriously();
-		
+		tvglitch = seriously.effect('tvglitch');
 		chroma = seriously.effect('chroma');
+		blackwhite = seriously.effect('hue-saturation')
+		
 		chroma.screen = 'green';
 		//chroma.balance = 1
+		tvglitch.distortion = 0.02;
+		tvglitch.verticalSync = 0;
+		tvglitch.scanlines = 0.05;
+		tvglitch.lineSync = 0.03;
+		tvglitch.frameSharpness = 10.67;
+		tvglitch.frameLimit = 0.3644;
+		tvglitch.bars = 0.15;
+		blackwhite.saturation = -0;
 		
 		// Create a source object by passing a CSS query string.
 		colorbars = seriously.source(new_lab.video_frame.player.media);
 		
 		// now do the same for the target canvas
 		target = seriously.target('#lab_canvas');
-		target.source = chroma;
+		target.source = blackwhite;
+		blackwhite.source = tvglitch;
+		tvglitch.source = chroma;
 		chroma.source = colorbars;
 		new_lab.video_frame.player.popcorn.play();
 		seriously.go();
