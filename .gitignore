@@ -1,3 +1,6 @@
 .DS_Store
 *.mp4
 *.webm
+video/
+node_modules/
+test_server.js

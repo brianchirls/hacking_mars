@@ -39,13 +39,17 @@ var instruction_lab = {
 			new_lab.video_frame.player = main_lab.create_player('video');
 		}
         var video_sources = configuration.urls.video;
+		console.log(video_sources);
         for(var codex in video_sources){
             var source = document.createElement('source');
             source.setAttribute('src', video_sources[codex]);
             new_lab.video_frame.player.media.appendChild(source);
         }
 		new_lab.video_frame.player.media.setAttribute('id', 'lab_video');
-        new_lab.video_frame.appendChild(new_lab.video_frame.player.media);
+        //new_lab.video_frame.appendChild(new_lab.video_frame.player.media);
+		var lab_canvas = document.createElement('canvas');
+		lab_canvas.setAttribute('id', 'lab_canvas');
+		new_lab.video_frame.appendChild(lab_canvas);
         new_lab.video_frame.appendChild(new_lab.video_frame.player.controls);
         // Setup frame slider:
         new_lab.video_width = 1280;
@@ -64,6 +68,28 @@ var instruction_lab = {
             new_lab.tip_manager.clear_tips();
         });
         // Finished
+		// Add Seriously Stuff// declare our variables
+		var seriously, // the main object that holds the entire composition
+			colorbars, // a wrapper object for our source image
+			target, // a wrapper object for our target canvas
+			chroma;
+		
+		seriously = new Seriously();
+		
+		chroma = seriously.effect('chroma');
+		chroma.screen = 'rgb(0,0,0)';
+		//chroma.balance = 1
+		
+		// Create a source object by passing a CSS query string.
+		console.log(new_lab.video_frame.player.media);
+		colorbars = seriously.source(new_lab.video_frame.player.media);
+		
+		// now do the same for the target canvas
+		target = seriously.target('#lab_canvas');
+		target.source = chroma;
+		chroma.source = colorbars;
+		new_lab.video_frame.player.popcorn.play();
+		seriously.go();
 		return new_lab;
     },
 	dispose: function (){
@@ -318,14 +344,14 @@ var instruction_lab = {
 				expander.style.display = 'block';
 				setTimeout(function (){
 					expander.style.opacity = 1;
-				}, 1)
+				}, 1);
 				this.resize();
 			} else{
 				instruction.highlight = false;
 				expander.style.display = 'none';
 				setTimeout(function (){
 					expander.style.opacity = 0;
-				}, 1)
+				}, 1);
 				this.resize();
 			}
 			var scroll_percent = old_scroll_pos / this.list_element.scrollHeight;

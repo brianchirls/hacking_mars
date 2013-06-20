@@ -2,9 +2,9 @@ var configuration = {
 	title: 'Test Lab', // Used as the text for the html title.
 	urls: {
 		video: {
-			'mp4': 'vids/sdn_diy_0.mp4',
-			'ogv': 'vids/sdn_diy_0.ogv',
-			'webm': 'vids/sdn_diy_0.webm'
+			'mp4': 'video/make_beaglebone_480.mp4',
+			'ogv': 'video/make_beaglebone_480.ogv',
+			'webm': 'video/make_beaglebone_480.webm'
 		}
 		/*time_stamp_play: 'play_button.svg'*/
 	},
