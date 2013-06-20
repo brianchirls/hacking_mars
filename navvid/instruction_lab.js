@@ -77,7 +77,7 @@ var instruction_lab = {
 		seriously = new Seriously();
 		
 		chroma = seriously.effect('chroma');
-		chroma.screen = 'rgb(0,0,0)';
+		chroma.screen = 'green';
 		//chroma.balance = 1
 		
 		// Create a source object by passing a CSS query string.
