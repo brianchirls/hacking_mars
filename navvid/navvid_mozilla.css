@@ -396,7 +396,7 @@ body{
     left: 10%;
     width: 80%;
     height: 10%;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(31, 38, 18, 0.7);
     border-radius: 0.2em 0.2em 0% 0%;
     z-index: 2;
 }
@@ -418,7 +418,7 @@ body{
     cursor: pointer;
 }
 .toggle_play:hover, .mute:hover{
-    fill: rgb(239, 72, 25);
+    fill: rgb(135, 153, 72);
 }
 .progress_bar{
     overflow: hidden;
@@ -428,7 +428,7 @@ body{
     fill: rgb(153, 153, 153);
 }
 .elapsed .hover{
-    fill: rgb(239, 72, 25);
+    fill: rgb(135, 153, 72);
     opacity:  0;
     width: 3;
 }
@@ -436,7 +436,7 @@ body{
     fill: rgb(51, 51, 51);
 }
 .progress_bar:hover .elapsed{
-    fill: rgb(239, 72, 25);
+    fill: rgb(135, 153, 72);
 }
 .timer{
     z-index: 1;
