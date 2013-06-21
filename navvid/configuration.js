@@ -40,11 +40,22 @@ var configuration = {
 				
 			]
 		},
-		{title: 'Update Your BeagleBone\'s Operating System', short_title: 'Update your OS', time_in: 30,
-			notes: "Your Beaglebone runs on Angstrom, a distribution of Linux that is made for embedded devices and microcontrollers. Here's the Angstrom manual, along with resources to learn how to update your Beaglebone's OS.",
+		{title: 'Cosmic Cuisine', short_title: 'Cosmic Cuisine', time_in: 30,
+			notes: "Without fertile soil or access to supplies, the task of providing nutritious and tasty food is a challenge for future colonists on Mars. Scientists are hard at work addressing many issues, such as how to extend shelf life of stored food and improve packaging, shield against the effects of radiation on stored food, which crops are ideal for growing in harsh environments, and how best to make a complete meal.",
 			content: [
-				{type: 'info', title: 'More About Angstrom', time_offset: 4, content: {url: 'http://www.linuxtogo.org/gowiki/AngstromManual'}},
-				{type: 'info', title: 'Updating Angstrom', time_offset: 10, content: {url: 'http://www.angstrom-distribution.org/demo/beaglebone/'}}
+				{type: 'info', title: 'Roasted Spiced Sweet Potatoes', time_offset: 4, content: {url: 'http://www.yummly.com/recipe/Roasted-spiced-sweet-potatoes-307230'}},
+				{type: 'info', title: 'The Challenges of Developing a Food System for a Mars Mission', time_offset: 10, content: {url: 'http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20080012587_2008010050.pdf'}},
+				{type: 'info', title: 'Food on Mars', time_offset: 4, content: {url: 'http://www.youtube.com/watch?v=UpnKh9Ny2E8'}},
+				{type: 'info', title: 'The Menu on Mars', time_offset: 10, content: {url: 'http://www.space.com/16269-mock-mars-mission-food-photos.html'}}
+			]
+		},
+		{title: 'DIY Greenhouse!', short_title: 'DIY Greenhouse!', time_in: 30,
+			notes: "If you wanted to build your own hydroponic inflatable greenhouse at home, where would you start? A few things to consider might be how to grow plants with controlled light and air, or how to transport a light and strong structure. LEDs like the ones used in a Martian greenhouse could be purchased at your neighborhood hardware store. Think about building materials that can withstand new environments too!  Check out other DIY greenhouses for more inspiration. Your ideas could be the greenhouses of the future!",
+			content: [
+				{type: 'info', title: 'Build Your Own Hydroponic Garden', time_offset: 4, content: {url: 'http://www.youtube.com/watch?feature=player_embedded&v=0KcFFnuG2Hc#at=16'}},
+				{type: 'info', title: 'Hydroponic growing offers students a green alternative', time_offset: 10, content: {url: 'http://goinggreenondelmarva.com/articles/hydroponic-growing-offers-students-a-green-alternative'}},
+				{type: 'info', title: 'Exploring Classroom Hydroponics', time_offset: 10, content: {url: 'http://www.kidsgardening.org/node/3760'}},
+				{type: 'info', title: 'Portable automated greenhouse', time_offset: 10, content: {url: 'http://makezine.com/2010/07/10/portable-automated-greenhouse/'}}
 			]
 		}
 	]
