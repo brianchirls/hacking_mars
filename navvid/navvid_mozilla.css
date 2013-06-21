@@ -30,7 +30,6 @@ body{
 }
 #lab_video{
 	display: none;
-	pointer-events: none;
 }
 #lab_canvas{
     position: absolute;
@@ -40,7 +39,6 @@ body{
     height: 100%;
 	border: 0px solid transparent;
 	background: transparent;
-	pointer-events: none;
 }
 .slider_arrow{
     opacity: 0;
@@ -446,4 +444,5 @@ body{
 	top:  0px;
 	height:  100%;
 	width:  100%;
+	pointer-events: none;
 }
