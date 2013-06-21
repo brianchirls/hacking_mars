@@ -29,6 +29,25 @@ function onTextures() {
   $("#loadtext").hide();
 };
 
+function moveCamera(position) {
+  
+  switch (position) {
+    case 'far':
+      $("span.property-name")[0].click()
+      break;
+    case 'front':
+      $("span.property-name")[1].click()
+      break;
+    case 'side':
+      $("span.property-name")[2].click()
+      break;
+    case 'inside':
+      $("span.property-name")[3].click()
+      break;
+  }
+  
+}
+
 function init() {
 
   /********************************
