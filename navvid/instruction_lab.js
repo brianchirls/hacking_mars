@@ -36,7 +36,7 @@ var instruction_lab = {
 			new_lab.video_frame.player = main_lab.create_player(saved_video);
 			//new_lab.video_frame.player.popcorn.currentTime(0);
 		} else{
-			new_lab.video_frame.player = main_lab.create_player('audio');
+			new_lab.video_frame.player = main_lab.create_player('video');
 		}
         var video_sources = configuration.urls.video;
         for(var codex in video_sources){
@@ -75,7 +75,7 @@ var instruction_lab = {
 			chroma,
 			tvglitch,
 			blackwhite;
-		/*
+			
 		seriously = new Seriously();
 		tvglitch = seriously.effect('tvglitch');
 		chroma = seriously.effect('chroma');
@@ -102,7 +102,7 @@ var instruction_lab = {
 		tvglitch.source = chroma;
 		chroma.source = colorbars;
 		new_lab.video_frame.player.popcorn.play();
-		seriously.go();*/
+		seriously.go();
 		return new_lab;
     },
 	dispose: function (){

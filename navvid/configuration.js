@@ -31,7 +31,7 @@ var configuration = {
 		}*/
 	},
 	instructions: [
-		{title: 'Greenhouse Structure', short_title: 'Greenhouse Structure', time_in: 27, camera_position: 'inside',
+		{title: 'Greenhouse Structure', short_title: 'Greenhouse Structure', time_in: 25, camera_position: 'inside',
 			notes: "Because a Martian greenhouse will be transported from Earth, it should be a flexible, inflatable structure that can be folded and placed into a capsule for launch.  It should also be strong and durable enough to withstand the Martian environment, and modular so that many more greenhouses can be added in the future.  One such model is the Prototype Lunar Greenhouse (LGH), located at the University of Arizona's Controlled Environment Agriculture Center (CEAC). The LGH is a cylindrical greenhouse chamber that grows plants hydroponically--without any soil! The structure also recycles air and waste.",
 			content: [
 				{type: 'leaf', title: 'Prototype Lunar Greenhouse', time_offset: 1, content: {url: 'http://www.google.com/url?q=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQ128I9KNY9k%26feature%3Dyoutu.be'}},
