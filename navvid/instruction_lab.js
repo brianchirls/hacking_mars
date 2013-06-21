@@ -148,7 +148,7 @@ var instruction_lab = {
 				expander.appendChild(instruction_notes);
 				var display_title = instruction.title;
 				if(display_title){
-					title.innerHTML = display_title.toUpperCase();
+					title.innerHTML = display_title//.toUpperCase();
 				}
 				header.appendChild(title);
 				content.appendChild(header);
@@ -204,7 +204,7 @@ var instruction_lab = {
 						display_title = tip_json.title;
 					}
 					if(display_title){
-						title.innerHTML = display_title.toUpperCase();
+						title.innerHTML = display_title//.toUpperCase();
 					}
 					tip.setAttribute('class', 'tip');
 					tip.setAttribute('target', '_blank');
@@ -529,7 +529,7 @@ var instruction_lab = {
 				display_title = tip_json.title;
 			}
 			if(display_title){
-				title.innerHTML = display_title.toUpperCase();
+				title.innerHTML = display_title//.toUpperCase();
 			}
 			tip.setAttribute('class', 'tip');
 			if(tip_json.content.url)
