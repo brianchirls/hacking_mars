@@ -1,3 +1,7 @@
+#lab_canvas, #frame_middle, #slider{
+	/*pointer-events: none;*/
+}
+
 body{
     font-family: 'lato', lato, serif;
     /*background: #2e3132;*/
@@ -436,6 +440,7 @@ body{
     overflow: auto;
 }
 .vignette{
+	pointer-events: none;
 	position: absolute;
 	left:  0px;
 	top:  0px;

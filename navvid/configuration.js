@@ -2,7 +2,7 @@ var configuration = {
 	title: 'Greenhouse on Mars', // Used as the text for the html title.
 	urls: {
 		video: {
-			'mp4': 'video/wtf_greenscreen_sm1.mp4'
+			'mp4': 'video/wtf_greenscreen_sm.mp3'
 			/*'ogv': 'video/make_beaglebone_480.ogv',
 			'webm': 'video/make_beaglebone_480.webm'*/
 		},
@@ -31,21 +31,12 @@ var configuration = {
 		}*/
 	},
 	instructions: [
-		{title: 'Software Defined Networking', short_title: 'Example', time_in: 3,
-			notes: "Your Beaglebone is a microcontroller. If you don't have one already, you can score one in the Makershed. It's customary to get started with a microcontroller by making an LED blink, just like in the Arduino video below. It's kind of like the \"Hello World\" of microcontrollers.",
+		{title: 'Greenhouse Structure', short_title: 'Greenhouse Structure', time_in: 27, camera_position: 'inside',
+			notes: "Because a Martian greenhouse will be transported from Earth, it should be a flexible, inflatable structure that can be folded and placed into a capsule for launch.  It should also be strong and durable enough to withstand the Martian environment, and modular so that many more greenhouses can be added in the future.  One such model is the Prototype Lunar Greenhouse (LGH), located at the University of Arizona's Controlled Environment Agriculture Center (CEAC). The LGH is a cylindrical greenhouse chamber that grows plants hydroponically--without any soil! The structure also recycles air and waste.",
 			content: [
-				{type: 'leaf', title: 'GET A BEAGLEBONE', time_offset: 1, content: {url: 'http://www.makershed.com/ProductDetails.asp?ProductCode=MKCCE1&Click=37845'}},
-				{type: 'sun', title: 'GET A BEAGLEBONE', time_offset: 3, content: {url: 'http://www.makershed.com/ProductDetails.asp?ProductCode=MKCCE1&Click=37845'}},
-				{type: 'leaf', title: 'ARDUINO EXAMPLE', time_offset: 5, content: {url: 'http://www.youtube-nocookie.com/embed/pMV2isNm8JU?rel=0'}},
-				
+				{type: 'leaf', title: 'Prototype Lunar Greenhouse', time_offset: 1, content: {url: 'http://www.google.com/url?q=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQ128I9KNY9k%26feature%3Dyoutu.be'}},
+				{type: 'leaf', title: 'GET A BEAGLEBONE', time_offset: 3, content: {url: 'http://www.google.com/url?q=http%3A%2F%2Fag.arizona.edu%2Flunargreenhouse%2F&sa=D&sntz=1&usg=AFQjCNFIOgiSaYmlcstAyIzxeT2sU0wx7g'}}
 			]
 		},
-		{title: 'Update Your BeagleBone\'s Operating System', short_title: 'Update your OS', time_in: 30,
-			notes: "Your Beaglebone runs on Angstrom, a distribution of Linux that is made for embedded devices and microcontrollers. Here's the Angstrom manual, along with resources to learn how to update your Beaglebone's OS.",
-			content: [
-				{type: 'info', title: 'More About Angstrom', time_offset: 4, content: {url: 'http://www.linuxtogo.org/gowiki/AngstromManual'}},
-				{type: 'info', title: 'Updating Angstrom', time_offset: 10, content: {url: 'http://www.angstrom-distribution.org/demo/beaglebone/'}}
-			]
-		}
 	]
 }
