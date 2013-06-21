@@ -3,8 +3,8 @@ var configuration = {
 	urls: {
 		video: {
 			'mp4': 'video/wtf_greenscreen_sm_final.mp4'
-			/*'ogv': 'video/make_beaglebone_480.ogv',
-			'webm': 'video/make_beaglebone_480.webm'*/
+			/*'ogv': 'video/.ogv',
+			'webm': 'video/.webm'*/
 		},
 		time_stamp_play: 'image/play_button.svg'
 	},
@@ -47,7 +47,7 @@ var configuration = {
 				{type: 'leaf', title: 'The Menu on Mars', time_offset: 10, content: {url: 'http://www.space.com/16269-mock-mars-mission-food-photos.html'}}
 			]
 		},
-		{title: 'DIY Greenhouse!', short_title: 'DIY Greenhouse!', time_in: 30,
+		{title: 'DIY Greenhouse!', short_title: 'DIY Greenhouse!', time_in: 35,
 			notes: "If you wanted to build your own hydroponic inflatable greenhouse at home, where would you start? A few things to consider might be how to grow plants with controlled light and air, or how to transport a light and strong structure. LEDs like the ones used in a Martian greenhouse could be purchased at your neighborhood hardware store. Think about building materials that can withstand new environments too!  Check out other DIY greenhouses for more inspiration. Your ideas could be the greenhouses of the future!",
 			content: [
 				{type: 'water', title: 'Build Your Own Hydroponic Garden', time_offset: 4, content: {url: 'http://www.youtube.com/watch?feature=player_embedded&v=0KcFFnuG2Hc#at=16'}},

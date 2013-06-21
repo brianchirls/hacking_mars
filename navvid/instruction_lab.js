@@ -83,9 +83,9 @@ var instruction_lab = {
 		
 		chroma.screen = 'green';
 		//chroma.balance = 1
-		tvglitch.distortion = 0.01;
+		tvglitch.distortion = 0.02;
 		tvglitch.verticalSync = 0;
-		tvglitch.scanlines = 0.02;
+		tvglitch.scanlines = 0.05;
 		tvglitch.lineSync = 0.03;
 		tvglitch.frameSharpness = 10.67;
 		tvglitch.frameLimit = 0.3644;
