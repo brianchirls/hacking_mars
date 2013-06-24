@@ -38,7 +38,7 @@ var configuration = {
 				{type: 'sun', title: 'Controlled Environment', time_offset: 32, content: {url: 'http://www.google.com/url?q=http%3A%2F%2Fag.arizona.edu%2Flunargreenhouse%2F&sa=D&sntz=1&usg=AFQjCNFIOgiSaYmlcstAyIzxeT2sU0wx7g'}}
 			]
 		},
-		{title: 'Cosmic Cuisine', short_title: 'Cosmic Cuisine', time_in: 90, camera_position: 'far',
+		{title: 'Cosmic Cuisine', short_title: 'Cosmic Cuisine', time_in: 90, camera_position: 'side',
 			notes: "Without fertile soil or access to supplies, the task of providing nutritious and tasty food is a challenge for future colonists on Mars. Scientists are hard at work addressing many issues, such as how to extend shelf life of stored food and improve packaging, shield against the effects of radiation on stored food, which crops are ideal for growing in harsh environments, and how best to make a complete meal.",
 			content: [
 				{type: 'water', title: 'Food System Challenges', time_offset: 100-90, content: {url: 'http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20080012587_2008010050.pdf'}},
@@ -55,6 +55,25 @@ var configuration = {
 				{type: 'leaf', title: 'Classroom Hydroponics', /*time_offset: 10,*/ content: {url: 'http://www.kidsgardening.org/node/3760'}},
 				{type: 'sun', title: 'Portable Auto Greenhouse', /*time_offset: 10,*/ content: {url: 'http://makezine.com/2010/07/10/portable-automated-greenhouse/'}}
 			]
-		}
+		},
+		{title: 'Greenhouse Demo Credits', content: [
+			{type: 'sun', title: 'Joshua Cassidy', content: {urls: ''}},
+			{type: 'sun', title: 'Josh Rosen', content: {urls: ''}},
+			{type: 'sun', title: 'Mary Beth Wilhelm', content: {urls: ''}},
+			{type: 'leaf', title: 'Stephanie Chang', content: {urls: ''}},
+			{type: 'leaf', title: 'Kenneth Fax', content: {urls: ''}},
+			{type: 'leaf', title: 'Cathy Fischer', content: {urls: ''}},
+			{type: 'leaf', title: 'John Karcz', content: {urls: ''}},
+			{type: 'leaf', title: 'Tiffany Kataria', content: {urls: ''}},
+			{type: 'leaf', title: 'Marlo McKenzie', content: {urls: ''}},
+			{type: 'leaf', title: 'Jenny Oh', content: {urls: ''}},
+			{type: 'leaf', title: 'Jon Rask', content: {urls: ''}},
+			{type: 'leaf', title: 'Craig Rosa', content: {urls: ''}},
+			{type: 'leaf', title: 'Andrea Swensrud', content: {urls: ''}},
+			{type: 'leaf', title: 'Aaron Weil', content: {urls: ''}},
+			{type: 'water', title: 'Jacob Brennan', content: {urls: ''}},
+			{type: 'water', title: 'Michael McCarthy', content: {urls: ''}},
+			{type: 'water', title: 'Amit Kapadia', content: {urls: ''}}
+		]}
 	]
 }
